@@ -9,13 +9,13 @@
         <!-- Favicon-->
         @include('frontend.layouts.styles')
     </head>
-    <body>
+    <body class="bg-primary bg-opacity-25">
         <!-- Responsive navbar-->
         @include('frontend.layouts.nav')
         <!-- Page content-->
-        <div class="container">
+
             @yield('content_main')
-        </div>
+
         <!-- Bootstrap core JS-->
        @include('frontend.layouts.scripts_footer')
     </body>

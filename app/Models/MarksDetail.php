@@ -10,13 +10,18 @@ class MarksDetail extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
-        'exam',
-        'rollNumber',
-        'board',
-        'session',
-        'marksObtained',
-        'maxMarks',
-        'percentage'
+        'rollNumber_10th',
+        'board_10th',
+        'session_10th',
+        'marksObtained_10th',
+        'maxMarks_10th',
+        'percentage_10th',
+        'rollNumber_12th',
+        'board_12th',
+        'session_12th',
+        'marksObtained_12th',
+        'maxMarks_12th',
+        'percentage_12th'
 
 
 

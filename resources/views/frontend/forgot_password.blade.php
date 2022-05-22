@@ -3,8 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+
+
             <div class="card mt-5" >
                 <div class="card-header">Forgot Password</div>
+                @if (session()->get('error'))
+                <div class="alert alert-danger"><strong>{{session()->get('error') }}</strong> </div>
+                 @endif
                 <div class="card-body">
                     <div class="text-center mt-5">
                         <form method="POST" action="{{ route('forget_password_submit') }}">

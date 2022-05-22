@@ -41,25 +41,38 @@ class AcademicController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'exam'=>'required',
-            'rollNumber'=>'required',
-            'board'=>'required',
-            'session'=>'required',
-            'marksObtained'=>'required',
-            'maxMarks'=>'required',
-            'percentage'=>'required',
+            // 'exam'=>'required',
+            '10th_rollNumber'=>'required',
+            '10th_board'=>'required',
+            '10th_session'=>'required',
+            '10th_marksObtained'=>'required',
+            '10th_maxMarks'=>'required',
+            '10th_percentage'=>'required',
+            '12th_rollNumber'=>'required',
+            '12th_board'=>'required',
+            '12th_session'=>'required',
+            '12th_marksObtained'=>'required',
+            '12th_maxMarks'=>'required',
+            '12th_percentage'=>'required',
 
         ]);
 
         $form=new MarksDetail();
         $form->user_id = $request->post('user_id');
-        $form->exam = $request->post('exam');
-        $form->rollNumber = $request->post('rollNumber');
-        $form->board = $request->post('board');
-        $form->session = $request->post('session');
-        $form->marksObtained = $request->post('marksObtained');
-        $form->maxMarks = $request->post('maxMarks');
-        $form->percentage = $request->post('percentage');
+        // $form->exam = $request->post('exam');
+        $form->rollNumber_10th = $request->post('10th_rollNumber');
+        $form->board_10th = $request->post('10th_board');
+        $form->session_10th = $request->post('10th_session');
+        $form->marksObtained_10th = $request->post('10th_marksObtained');
+        $form->maxMarks_10th = $request->post('10th_maxMarks');
+        $form->percentage_10th = $request->post('10th_percentage');
+        // 12th details
+        $form->rollNumber_12th = $request->post('12th_rollNumber');
+        $form->board_12th = $request->post('12th_board');
+        $form->session_12th = $request->post('12th_session');
+        $form->marksObtained_12th = $request->post('12th_marksObtained');
+        $form->maxMarks_12th = $request->post('12th_maxMarks');
+        $form->percentage_12th = $request->post('12th_percentage');
         $form->save();
 
         $user_data = User::where('id',Auth::guard('web')->user()->id)->first();

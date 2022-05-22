@@ -22,7 +22,7 @@ class LoginController extends Controller
     } //Method Ends Here********************
     public function login()
     {
-        
+
         return view('frontend.login_form');
         // $pass=bcrypt('pass');
         // dd($pass);
@@ -56,7 +56,7 @@ class LoginController extends Controller
             }
         } else {
 
-            return redirect()->route('login')->with('error', 'Credentials do not match');;
+            return redirect()->back()->with('error', 'Invalid Credentials!');
         }
     }//Method Ends Here********************
 
@@ -74,6 +74,7 @@ class LoginController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|',
+            'confirm_password' => 'required|same:password',
 
 
         ]);
@@ -93,21 +94,21 @@ class LoginController extends Controller
 
         \Mail::to($request->email)->send(new LoginMail($subject, $message));
 
-        return redirect()->back()->with('success','Please Check Your Mail to verify');
+        return redirect()->back()->with('success','Verification Link sent to Your Email!');
     } //Method Ends Here********************
 
     public function verify_mail($token, $email)
     {
         $user = User::where('token', $token)->where('email', $email)->first();
         if (!$user) {
-            return redirect()->route('frontend.login_form');
+            return redirect()->route('login');
         }
         $user->status = "active";
         $user->token = "";
         $user->update();
 
         //echo "sucess";
-         return redirect()->route('login')->with('success','Email Verified Successfully');
+         return redirect()->route('login')->with('error','Email Verified Successfully-Login Now');
     } //Method Ends Here********************
 
 
@@ -136,7 +137,7 @@ class LoginController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if (!$user) {
-            dd('Email not found');
+           return redirect()->back()->with('error','Email Not found');
         }
 
         $user->token = $token;
@@ -144,11 +145,12 @@ class LoginController extends Controller
 
         $reset_link = url('reset-password/' . $token . '/' . $request->email);
         $subject = 'Reset Password';
-        $message = 'Please click on the following link: <br><a href="' . $reset_link . '">Click here</a>';
+        $message = 'You are receiving this mail because you have asked for Password reset. If it is not you , contact immediately Compsoft Solutions: <br><a href="' . $reset_link . '">Click here to reset your password</a>';
 
         \Mail::to($request->email)->send(new LoginMail($subject, $message));
 
-        echo 'Check your email.';
+        return redirect()->back()->with('error','Verification Link sent to your Email!');
+        //echo 'Check your email.';
     } //Method Ends Here********************
 
     public function reset_password($token, $email)
@@ -163,13 +165,18 @@ class LoginController extends Controller
 
     public function reset_password_submit(Request $request)
     {
+        $request->validate([
+            'new_password'=> 'required',
+           'confirm_password'=> 'required|same:new_password'
+
+        ]);
         $user = User::where('token', $request->token)->where('email', $request->email)->first();
 
         $user->token = "";
         $user->password = Hash::make($request->new_password);
         $user->update();
 
-        echo 'Password is reset.';
+        return redirect()->route('login')->with('error','Password Reset was Successful');
     } //Method Ends Here********************
 
     public function logout()

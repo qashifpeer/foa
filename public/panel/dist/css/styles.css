@@ -2317,7 +2317,7 @@ progress {
   padding: 0.375rem 0;
   margin-bottom: 0;
   line-height: 1.5;
-  color: #212529;
+  color: #ca8300;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
@@ -11704,3 +11704,4 @@ img.profile-photo {
     width: 100%;
     height: auto;
 }
+
