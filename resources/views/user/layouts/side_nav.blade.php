@@ -21,6 +21,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                     Academic Details
                 </a>
+                <a class="nav-link" href="{{ route('documents.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Document Uploads
+                </a>
 
 
                 {{-- <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">

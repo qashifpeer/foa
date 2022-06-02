@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Details\AcademicController;
+use App\Http\Controllers\Details\DocumentController;
 use App\Http\Controllers\Details\PersonalController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -16,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 /*Auth ROUTES*************************************
 *******/
-Route::get('/', [LoginController::class, 'index'])->name('home');
+Route::get('/login', [LoginController::class, 'index'])->name('home');
 Route::get('/dashboard-admin',[LoginController::class,'admin_dash'])->name('admin_dash')->middleware('admin');
 
 
@@ -49,6 +50,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 *******/
 Route::resource('details',PersonalController::class)->middleware('auth');
 Route::resource('academic',AcademicController::class)->middleware('auth');
+Route::resource('documents',DocumentController::class)->middleware('auth');
 
 // Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard-user',[LoginController::class,'user_dash'])->name('user_dash')->middleware('auth:auth');

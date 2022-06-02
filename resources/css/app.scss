@@ -1,0 +1,15 @@
+@use 'variable';
+
+
+
+//components
+
+@use 'components/animations';
+@use 'components/buttons';
+@use 'components/typography';
+@use 'components/mixin';
+
+//sections
+@use 'sections/nav';
+@use 'sections/get-started';
+
