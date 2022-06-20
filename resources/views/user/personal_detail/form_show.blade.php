@@ -33,3 +33,18 @@
     </tbody>
   </table>
 
+  @if (Auth::user()->edu_submitted == 0)
+
+  <div class="row text-center">
+    <div class="col-md-12">
+        <a href="{{ route('academic.index') }}">
+        <button type="button" class="btn btn-info btn-rounded">Proceed To Next Level
+            {{-- <span>
+                <i class="fas fa-people-line"></i>
+            </span> --}}
+        </button>
+    </a>
+    </div>
+  </div>
+  @endif
+

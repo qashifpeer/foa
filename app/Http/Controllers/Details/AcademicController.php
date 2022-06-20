@@ -42,37 +42,37 @@ class AcademicController extends Controller
     {
         $request->validate([
             // 'exam'=>'required',
-            '10th_rollNumber'=>'required',
-            '10th_board'=>'required',
-            '10th_session'=>'required',
-            '10th_marksObtained'=>'required',
-            '10th_maxMarks'=>'required',
-            '10th_percentage'=>'required',
-            '12th_rollNumber'=>'required',
-            '12th_board'=>'required',
-            '12th_session'=>'required',
-            '12th_marksObtained'=>'required',
-            '12th_maxMarks'=>'required',
-            '12th_percentage'=>'required',
+            'rollNumber_10th'=>'required',
+            'board_10th'=>'required',
+            'session_10th'=>'required',
+            'marksObtained_10th'=>'required',
+            'maxMarks_10th'=>'required',
+            'percentage_10th'=>'required',
+            'rollNumber_12th'=>'required',
+            'board_12th'=>'required',
+            'session_12th'=>'required',
+            'marksObtained_12th'=>'required',
+            'maxMarks_12th'=>'required',
+            'percentage_12th'=>'required',
 
         ]);
 
         $form=new MarksDetail();
         $form->user_id = $request->post('user_id');
         // $form->exam = $request->post('exam');
-        $form->rollNumber_10th = $request->post('10th_rollNumber');
-        $form->board_10th = $request->post('10th_board');
-        $form->session_10th = $request->post('10th_session');
-        $form->marksObtained_10th = $request->post('10th_marksObtained');
-        $form->maxMarks_10th = $request->post('10th_maxMarks');
-        $form->percentage_10th = $request->post('10th_percentage');
+        $form->rollNumber_10th = $request->post('rollNumber_10th');
+        $form->board_10th = $request->post('board_10th');
+        $form->session_10th = $request->post('session_10th');
+        $form->marksObtained_10th = $request->post('marksObtained_10th');
+        $form->maxMarks_10th = $request->post('maxMarks_10th');
+        $form->percentage_10th = $request->post('percentage_10th');
         // 12th details
-        $form->rollNumber_12th = $request->post('12th_rollNumber');
-        $form->board_12th = $request->post('12th_board');
-        $form->session_12th = $request->post('12th_session');
-        $form->marksObtained_12th = $request->post('12th_marksObtained');
-        $form->maxMarks_12th = $request->post('12th_maxMarks');
-        $form->percentage_12th = $request->post('12th_percentage');
+        $form->rollNumber_12th = $request->post('rollNumber_12th');
+        $form->board_12th = $request->post('board_12th');
+        $form->session_12th = $request->post('session_12th');
+        $form->marksObtained_12th = $request->post('marksObtained_12th');
+        $form->maxMarks_12th = $request->post('maxMarks_12th');
+        $form->percentage_12th = $request->post('percentage_12th');
         $form->save();
 
         $user_data = User::where('id',Auth::guard('web')->user()->id)->first();

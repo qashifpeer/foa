@@ -58,3 +58,8 @@
     </tbody>
   </table>
 
+  @if (Auth::user()->docs_submitted == 0)
+
+ 
+  @endif
+

@@ -22,7 +22,7 @@
             <main>
 
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">@yield('heading')</h1>
+                  
 
                     @yield('main_content')
 

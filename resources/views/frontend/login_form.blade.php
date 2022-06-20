@@ -9,7 +9,7 @@
         <div class=" row text-white">
             <div class="col-12 col-lg-6 gradient shadow">
                 <div class="cta-info w-100">
-                    <h4 class="display-4 text-center pt-3"> Steps to Apply Online </h4>
+                    <h4 class="display-4 text-center pt-5"> Steps to Apply Online </h4>
                     <hr class="text-white">
 
                     <ul class="cta-info__list">
@@ -35,6 +35,11 @@
             <div class="col-12 col-lg-6 bg-white shadow p-3">
                 <div class="form w-100">
                     <h4 class="display-3--title" >Login to Fill your Application</h4>
+
+                    @if (session()->get('error'))
+                    <div class="alert alert-danger"><strong>{{session()->get('error') }}</strong> </div>
+                     @endif
+
                     <form class="row" method="POST" action="{{ route('login_submit') }}">
                         @csrf
                         <div class="mb-3 col-md-12 ">

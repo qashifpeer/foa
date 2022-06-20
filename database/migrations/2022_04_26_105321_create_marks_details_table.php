@@ -17,18 +17,18 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('10th_rollNumber');
-            $table->string('10th_board');
-            $table->string('10th_session');
-            $table->integer('10th_marksObtained');
-            $table->integer('10th_maxMarks');
-            $table->float('10th_percentage');
-            $table->string('12th_rollNumber');
-            $table->string('12th_board');
-            $table->string('12th_session');
-            $table->integer('12th_marksObtained');
-            $table->integer('12th_maxMarks');
-            $table->float('12th_percentage');
+            $table->string('rollNumber_10th');
+            $table->string('board_10th');
+            $table->string('session_10th');
+            $table->integer('marksObtained_10th');
+            $table->integer('maxMarks_10th');
+            $table->float('percentage_10th');
+            $table->string('rollNumber_12th');
+            $table->string('board_12th');
+            $table->string('session_12th');
+            $table->integer('marksObtained_12th');
+            $table->integer('maxMarks_12th');
+            $table->float('percentage_12th');
             $table->timestamps();
         });
     }

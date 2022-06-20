@@ -56,7 +56,7 @@ class LoginController extends Controller
             }
         } else {
 
-            return redirect()->back()->with('error', 'Invalid Credentials!');
+            return redirect()->back()->with('error', 'Invalid Credentials! Or You forgot to Register First');
         }
     }//Method Ends Here********************
 
@@ -88,9 +88,9 @@ class LoginController extends Controller
         $user->save();
 
         $reset_link = url('verify-email/' . $token . '/' . $request->email);
-        $subject = 'Reset Password';
-        $message = 'Please click on the following link: <br>';
-        $message .= '<a href="' . $reset_link . '">Click Here</a>';
+        $subject = 'Confirm Email';
+        $message = 'Please click on the following link To Confirm Your email: <br>';
+        $message .= '<a href="' . $reset_link . '"> Verify Your Email</a>';
 
         \Mail::to($request->email)->send(new LoginMail($subject, $message));
 
